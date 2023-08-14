@@ -3,26 +3,25 @@ package com.mj.beans;
 import java.util.Date;
 
 public class WishMessageGenerator {
+	//ctrl+shift+o :: to import package
 	Date date;
 	static {
 		System.out.println("static block executed");
 	}
 	public WishMessageGenerator() {
-		// TODO Auto-generated constructor stub
 		System.out.println("WishMessageGenerator 0-param constructor");
 	}
-
+	//alt+shift+s,r -->select setter :: to get setter method
 	public void setDate(Date date) {
 		System.out.println("Wishmessagegenerator setter method");
 		this.date = date;
 	}
 	public String generateWishMessage(String user) {
-		// TODO Auto-generated method stub
 		System.out.println("generateWish  method executed");
-		int hour=date.getHours();
+		//get current hour of day
+		int hour=date.getHours();//24 hour format
 		if (hour<12) {
 			return "Good Morning "+user;
-			
 		}
 		else if (hour<16) {
 			return "Good Afternoon "+user;
