@@ -27,7 +27,7 @@ public class WishMessageGenerator {
 			return "Good Afternoon "+user;
 		}
 		else if (hour<20) {
-			return "Good Morning "+user;
+			return "Good Evening "+user;
 		}
 		else {
 			return "Good Night "+user;
