@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+  <bean id="wmg" class="com.mj.beans.WishMessageGenerator">
+  <property name="user" ref="user"></property>
+  </bean>
+  <bean id="user" class="com.mj.beans.User">
+  <property name="userName" value="MJ"></property>
+  <property name="wmg" ref="wmg"></property>
+  </bean>
+  <!-- more bean definitions go here -->
+</beans>
