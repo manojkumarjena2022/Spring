@@ -38,6 +38,7 @@ public class RealTimeDITest {
 		//invoke the methods
 		try {
 			String result=controller.processCustomer(vo);
+			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Internal problem-Try Again");

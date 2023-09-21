@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- Datasource confg -->
+<!-- Datasource confg -->
 	<bean id="dmds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -13,14 +13,27 @@
 		<property name="username" value="system" />
 		<property name="password" value="tiger" />
 	</bean>
+	<bean id="mysqlDmds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql:///spring_boot_tutorial" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
 	<!-- DAO class confg -->
 	<bean id="custDAO" class="com.mj.dao.CustomerDAOImpl">
 		<constructor-arg ref="dmds" />
 	</bean>
+	<bean id="mysqlCustDAO" class="com.mj.dao.CustomerMySQLDAOImpl">
+		<constructor-arg ref="mysqlDmds" />
+	</bean>
 	<!-- service class config -->
 	<bean id="custService"
 		class="com.mj.service.CustomerMgmtServiceImpl">
-		<constructor-arg ref="custDAO"></constructor-arg>
+		<!-- <constructor-arg ref="custDAO"></constructor-arg> -->
+		<constructor-arg ref="mysqlCustDAO"></constructor-arg>
 	</bean>
 	<!-- Controller class confg -->
 	<bean id="controller" class="com.mj.controller.MainController">

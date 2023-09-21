@@ -24,7 +24,7 @@ public final class CustomerMgmtServiceImpl implements ICustomerMgmtService {
 		bo.setIntrestAmount(intAmt);
 		//use dao
 		int count=dao.insert(bo);
-		return count==0?"Customer registered successfully-->Simple intrest amount::"+intAmt:"Customer registration failed";
+		return count==1?"Customer registered successfully-->Simple intrest amount::"+intAmt:"Customer registration failed";
 	}
 
 }
