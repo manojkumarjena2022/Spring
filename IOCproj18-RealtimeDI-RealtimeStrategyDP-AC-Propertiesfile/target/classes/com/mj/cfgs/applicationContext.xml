@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- Datasource confg -->
+	<bean id="dmds"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	<!-- DAO class confg -->
+	<bean id="custDAO" class="com.mj.dao.CustomerDAOImpl">
+	    <!-- Fixed System properties -->
+	    <property name="osname" value="${os.name}"/>
+	    <property name="osversion" value="${os.version}"/>
+	    <property name="username" value="${user.name}"/>
+	    <property name="pathdata" value="${Path}"/>
+	    
+		<constructor-arg ref="dmds" />
+	</bean>
+	<bean id="mysqlCustDAO" class="com.mj.dao.CustomerMySQLDAOImpl">
+		<constructor-arg ref="dmds" />
+	</bean> 
+	<!-- service class config -->
+	<bean id="custService"
+		class="com.mj.service.CustomerMgmtServiceImpl">
+		<constructor-arg ref="${jdbc.dao}"></constructor-arg>
+	</bean>
+	<!-- Controller class confg -->
+	<bean id="controller" class="com.mj.controller.MainController">
+		<constructor-arg ref="custService"></constructor-arg>
+	</bean>
+	<!-- <context:property-placeholder location="com/mj/commons/jdbc.properties"/> -->
+	<!-- Multiple properties file configure -->
+	<context:property-placeholder location="com/mj/commons/jdbc.properties,com/mj/commons/jdbc1.properties"/>
+</beans>
