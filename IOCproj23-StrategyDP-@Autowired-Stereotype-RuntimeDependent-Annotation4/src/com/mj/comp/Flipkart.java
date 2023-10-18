@@ -1,6 +1,7 @@
 package com.mj.comp;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class Flipkart {
 	@Autowired
 	@Qualifier("dtdc")
 	Courier courier;
+	@Autowired
+	Date date;
 	
 //	@Value("www.flipkart.com")
 //	String url;
@@ -39,13 +42,19 @@ public class Flipkart {
 	@Value("${ftp.info.age}")
 	int age;
 	
+	@Value("${os.name}")
+	String osName;
+	@Value("${Path}")
+	String pathValue;
+	
 	public Flipkart() {
 		System.out.println("Flipkart.Flipkart()");
 	}
 	
 	//business method
 	public String shopping(String[] items,float[] prices) {
-		System.out.println("Url :"+url+" age : "+age);
+		System.out.println("Url :"+url+" age : "+age+ "date:"+date);
+		System.out.println("OS Name :"+osName+" Path : "+pathValue);
 		float billAmount=0.0f;
 		for(float p:prices)
 			billAmount+=p;
