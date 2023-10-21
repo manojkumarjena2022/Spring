@@ -3,10 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!-- <bean id="voter" class="com.mj.beans.VoterVerifier" init-method="myInit" destroy-method="myDestroy" scope="prototype"> -->
 <bean id="voter" class="com.mj.beans.VoterVerifier">
 <property name="name" value="manoj"/>
 <property name="age" value="25"/>
-<!-- <property name="age" value="-25"/> -->
 </bean>
 </beans>
